@@ -1,0 +1,30 @@
+<mat-card>  
+    <div class="alert alert-info">  
+        <strong>Angular Material Table for getting data from Api</strong>  
+    </div>  
+    <mat-form-field>
+        <input type="text" matInput (keyup)="searchFilter($event.target.value)"  (focus)="setupFilter('title')" placeholder="Search by Title">
+      </mat-form-field>
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource] = "tableData">
+         <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{e.title}}</mat-cell>
+         </ng-container>
+         <ng-container matColumnDef="url">
+             <mat-header-cell *matHeaderCellDef>Url</mat-header-cell>
+             <mat-cell *matCellDef="let e">{{e.url}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="created_at">
+             <mat-header-cell *matHeaderCellDef>Created_At</mat-header-cell>
+             <mat-cell *matCellDef="let e">{{e.created_at}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="author">
+             <mat-header-cell *matHeaderCellDef>Author</mat-header-cell>
+             <mat-cell *matCellDef="let e">{{e.author}}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="disColumns"></mat-header-row>
+          <mat-row (click)="modal(row)"  *matRowDef="let row; columns: disColumns"></mat-row>
+      </mat-table>
+    </div>
+  </mat-card>  
